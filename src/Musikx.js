@@ -1,0 +1,36 @@
+export const authEndPoint="https://accounts.spotify.com/authorize";
+const redirectUri="http://localhost:3000/"
+//La clientID la saca desde la pagina Spotify Developer 
+const clientId="38c90031f77b45d59a2a1d4b365041a1"
+const scopes = [
+    "user-read-playback-position",
+    "user-read-email",
+    "user-library-modify",
+    "playlist-modify-public",
+    "ugc-image-upload",
+    "user-follow-modify",
+    "user-modify-playback-state",
+    "user-read-recently-played",
+    "user-read-private",
+    "user-library-read",
+    "user-top-read",
+    "playlist-modify-private",
+    "user-follow-read",
+    "user-read-playback-state",
+    "user-read-currently-playing",
+    "playlist-read-private",
+    "playlist-read-collaborative",
+];
+
+export const getTokenFromUrl=()=>{
+    return window.location.hash
+    .substring(1)
+    .split('&')
+    .reduce((f,x)=>{
+        let p=x.split('=')
+        f[p[0]]=decodeURIComponent(p[1])
+        return f;
+    },{} )
+}
+
+export const loginUrl=`${authEndPoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`;
