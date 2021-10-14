@@ -1,7 +1,7 @@
 export const authEndPoint="https://accounts.spotify.com/authorize";
 const redirectUri="http://localhost:3000/"
 //La clientID la saca desde la pagina Spotify Developer 
-const clientId="38c90031f77b45d59a2a1d4b365041a1"
+const clientId=""
 const scopes = [
     "user-read-playback-position",
     "user-read-email",
